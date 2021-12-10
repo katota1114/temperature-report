@@ -2,7 +2,10 @@ import express from "express";
 import server from "https";
 import fs from "fs";
 
-const port = 3000;
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = "3000";
+}
 
 const app: express.Express = express();
 app.use(express.static("public"));
