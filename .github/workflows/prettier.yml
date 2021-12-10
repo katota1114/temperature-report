@@ -1,27 +1,25 @@
 name: Prettier
 
 on:
-  pull-request:
+  pull_request:
 
 env:
   FILE_PATTERN: "src/**/*.{ts,tsx,js,jsx}"
 
 jobs:
   lint:
-    runs-on: ubuntsu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
-      - uses: actions/setup-node
+      - uses: actions/setup-node@v2
         with:
           node-version: 16.13
       - name: Run Prettier
         run: |
           npm install
           npx prettier -w ${FILE_PATTERN}
-      - name: Commit Formatted Code
-        run: |
-          git add .
-          git commit -m 'Add GitHub Actions'
-          git push origin main
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "[format] Prettierで自動フォーマット"
