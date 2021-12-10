@@ -17,6 +17,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.17.13",
+    "@types/express-session": "^1.17.4",
     "@types/node": "^16.11.12",
     "@types/passport": "^1.0.7",
     "ets": "^1.0.3",
